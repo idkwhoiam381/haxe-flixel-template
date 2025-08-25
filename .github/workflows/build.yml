@@ -50,6 +50,9 @@ jobs:
           ndk-version: r27c
           add-to-path: false
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@main
+
       - name: Install Libraries
         run: ${{ inputs.setupCommand }}
 
