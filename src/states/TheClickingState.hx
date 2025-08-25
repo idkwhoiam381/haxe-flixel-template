@@ -7,7 +7,7 @@ import flixel.text.FlxText;
 import flixel.sound.FlxSound;
 import flixel.input.mouse.FlxMouse;
 
-class TheClicking extends FlxState
+class TheClickingState extends FlxState
 {
     var player:FlxSprite;
     var scoreText:FlxText;
@@ -57,7 +57,7 @@ class TheClicking extends FlxState
         cursor = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
         cursor.loadGraphic("assets/images/cursor2.png");
         add(cursor);
-        FlxG.mouse.show(false);
+        FlxG.inputs.mouse(true);
 
         // Boyfriend karakteri
         boyfriend = new FlxSprite(FlxG.width - 150, FlxG.height / 2 - 50);
@@ -75,6 +75,8 @@ class TheClicking extends FlxState
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
+
+        var mouse = FlxG.inputs.getPointer();
 
         // Özelleştirilmiş imleci takip ettir
         cursor.x = mouse.screenX;
