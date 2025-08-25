@@ -27,6 +27,8 @@ class TheClicking extends FlxState
     var music1:FlxSound;
     var music2:FlxSound;
 
+    var mouse = FlxG.inputs.getPointer();
+
     override public function create():Void
     {
         super.create();
@@ -67,11 +69,8 @@ class TheClicking extends FlxState
         music1 = FlxG.sound.load("assets/music/background1.ogg");
         music2 = FlxG.sound.load("assets/music/background2.ogg");
 
-        music1.loop = true;
-        music2.loop = true;
-
-        music1.play();
-        music2.play();
+        music1.play(true);
+        music2.play(true);
     }
 
     override public function update(elapsed:Float):Void
@@ -79,8 +78,8 @@ class TheClicking extends FlxState
         super.update(elapsed);
 
         // Özelleştirilmiş imleci takip ettir
-        cursor.x = FlxG.mouse.screenX - cursor.width / 2;
-        cursor.y = FlxG.mouse.screenY - cursor.height / 2;
+        cursor.x = mouse.screenX;
+        cursor.y = mouse.screenY;
 
         if (FlxG.mouse.justPressed())
         {
