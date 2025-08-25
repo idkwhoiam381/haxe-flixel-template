@@ -54,7 +54,7 @@ class PlayState extends FlxState
 
         // Özelleştirilmiş fare imleci
         cursor = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
-        cursor.loadGraphic("assets/images/cursor.png");
+        cursor.loadGraphic("assets/images/cursor2.png");
         add(cursor);
         FlxG.mouse.show(false);
 
