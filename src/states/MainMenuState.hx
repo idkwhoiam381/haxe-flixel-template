@@ -41,7 +41,7 @@ class MainMenuState extends FlxState
         cursor = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
         cursor.loadGraphic("assets/images/cursor2.png");
         add(cursor);
-        FlxG.mouse.show(false); // varsayılan imleci gizle
+        FlxG.inputs.mouse(true); // varsayılan imleci gizle
 
         // Menü müziği
         FlxG.sound.playMusic("assets/music/musicBackground.ogg", 1, true);
@@ -50,6 +50,8 @@ class MainMenuState extends FlxState
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
+
+        var mouse = FlxG.inputs.getPointer();
 
         // Mouse takip
         cursor.x = FlxG.mouse.screenX - cursor.width / 2;
