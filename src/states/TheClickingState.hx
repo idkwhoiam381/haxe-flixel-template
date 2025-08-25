@@ -4,9 +4,9 @@ import flixel.FlxState;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
-import flixel.system.FlxSound;
+import flixel.sound.FlxSound;
 
-class PlayState extends FlxState
+class TheClicking extends FlxState
 {
     var player:FlxSprite;
     var scoreText:FlxText;
