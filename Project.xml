@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
-	<app title="haxe-flixel-template" file="haxe-flixel-template" main="Main" version="0.0.1" company="haxe-flixel-template" />
+	<app title="ClickerGame" file="MyGame" packageName="com.pump.ClickerGame" package="com.pump.ClickerGame" main="Main" />
 	<app preloader="utils.Preloader" />
 
 	<set name="BUILD_DIR" value="export" />
@@ -8,12 +8,13 @@
 	<window width="1920" height="1080" fps="60" background="#000000" hardware="true" vsync="true" />
 	<window if="html5" width="1280" height="720" resizable="true" />
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
+	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" allow-shaders="true" require-shaders="true" allow-high-dpi="true" />
 
 	<classpath name="src" />
 
 	<assets path="assets" />
 
-	<haxelib name="flixel" />
+	<haxelib name="flixel" version="4.10.0" />
 	<haxelib name="flixel-addons" />
 
 	<haxedef name="FLX_NO_MOUSE" if="mobile" />
