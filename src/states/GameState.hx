@@ -59,7 +59,7 @@ class MainMenuState extends FlxState
             // Oyna yazısına tıklayınca
             if (playText.overlapsPoint(FlxG.mouse.screenX, FlxG.mouse.screenY))
             {
-                FlxG.switchState(new state.TheClicking());
+                FlxG.switchState(new states.TheClicking());
             }
 
             // Ayar yazısına tıklanırsa pasif, hiçbir şey yapmaz
