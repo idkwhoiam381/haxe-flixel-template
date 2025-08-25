@@ -5,6 +5,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.sound.FlxSound;
+import flixel.input.mouse.FlxMouse;
 
 class TheClicking extends FlxState
 {
