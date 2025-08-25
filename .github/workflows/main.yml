@@ -1,4 +1,4 @@
-name: Build Psych Engine
+name: Build
 
 on: workflow_dispatch
 
