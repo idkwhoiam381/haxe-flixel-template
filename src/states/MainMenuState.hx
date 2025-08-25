@@ -3,6 +3,7 @@ package states;
 import flixel.FlxState;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.input.mouse.FlxMouse;
 import flixel.text.FlxText;
 
 class MainMenuState extends FlxState
@@ -59,7 +60,7 @@ class MainMenuState extends FlxState
             // Oyna yazısına tıklayınca
             if (playText.overlapsPoint(FlxG.mouse.screenX, FlxG.mouse.screenY))
             {
-                FlxG.switchState(new states.TheClicking());
+                FlxG.switchState(new states.TheClickingState());
             }
 
             // Ayar yazısına tıklanırsa pasif, hiçbir şey yapmaz
