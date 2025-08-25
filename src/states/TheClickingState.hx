@@ -4,8 +4,7 @@ import flixel.FlxState;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
-import flixel.sound.FlxSound;
-import flixel.input.mouse.FlxMouse;
+import flixel.system.FlxSound;
 
 class TheClickingState extends FlxState
 {
@@ -55,32 +54,33 @@ class TheClickingState extends FlxState
 
         // Özelleştirilmiş fare imleci
         cursor = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
-        cursor.loadGraphic("assets/images/cursor2.png");
+        cursor.loadGraphic("assets/images/cursor.png");
         add(cursor);
-        FlxG.inputs.mouse(true);
+        FlxG.mouse.show(false);
 
         // Boyfriend karakteri
         boyfriend = new FlxSprite(FlxG.width - 150, FlxG.height / 2 - 50);
         boyfriend.loadGraphic("assets/images/boyfriend.png");
         add(boyfriend);
 
-        // Müzikler
+        // İki .ogg müzik
         music1 = FlxG.sound.load("assets/music/background1.ogg");
         music2 = FlxG.sound.load("assets/music/background2.ogg");
 
-        music1.play(true);
-        music2.play(true);
+        music1.loop = true;
+        music2.loop = true;
+
+        music1.play();
+        music2.play();
     }
 
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
 
-        var mouse = FlxG.inputs.getPointer();
-
         // Özelleştirilmiş imleci takip ettir
-        cursor.x = mouse.screenX;
-        cursor.y = mouse.screenY;
+        cursor.x = FlxG.mouse.screenX - cursor.width / 2;
+        cursor.y = FlxG.mouse.screenY - cursor.height / 2;
 
         if (FlxG.mouse.justPressed())
         {
