@@ -18,7 +18,7 @@ class MainMenuState extends FlxState
 
         // Arka plan
         bg = new FlxSprite(0, 0);
-        bg.loadGraphic("assets/images/background.png");
+        bg.loadGraphic("assets/images/back3.png");
         add(bg);
 
         // Başlık
