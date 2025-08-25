@@ -28,8 +28,6 @@ class TheClicking extends FlxState
     var music1:FlxSound;
     var music2:FlxSound;
 
-    var mouse = FlxG.inputs.getPointer();
-
     override public function create():Void
     {
         super.create();
