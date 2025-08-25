@@ -7,7 +7,7 @@ echo Makking the main haxelib and setuping folder in same time..
 haxelib setup ~/haxelib
 echo Installing dependencies...
 echo This might take a few moments depending on your internet speed.
-haxelib install flixel 5.3.1 --quiet
+haxelib install flixel 4.10.1 --quiet
 haxelib install flixel-addons 3.1.1 --quiet
 haxelib install lime 8.0.2 --quiet
 haxelib install openfl 9.2.2 --quiet
