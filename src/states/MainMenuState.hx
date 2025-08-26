@@ -3,8 +3,7 @@ package states;
 import flixel.FlxState;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.text.FlxText
-import states.TheClickingState;
+import flixel.text.FlxText;
 
 class MainMenuState extends FlxState
 {
@@ -60,7 +59,7 @@ class MainMenuState extends FlxState
             // Oyna yazısına tıklayınca
             if (FlxG.mouse.overlaps(playText))
             {
-                FlxG.switchState(new TheClickingState());
+                FlxG.switchState(new states.TheClickingState());
             }
         }
     }
