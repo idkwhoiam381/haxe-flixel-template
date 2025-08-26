@@ -18,9 +18,15 @@ jobs:
       with:
         haxe-version: "4.2.5"
 
-    - name: Install Haxelib dependencies
+    - name: Install dependencies
       run: |
-        haxelib setup ~/.haxelib
+        sudo apt-get update
+        sudo apt-get install -y haxe neko libneko-dev openjdk-11-jdk
+        mkdir -p ~/.haxelib_repo
+        haxelib setup ~/.haxelib_repo
+
+    - name: Install Haxelib
+      run: |
         haxelib install lime 7.9.0 --quiet
         haxelib install openfl 9.1.0 --quiet
         haxelib install flixel 4.11.0 --quiet
