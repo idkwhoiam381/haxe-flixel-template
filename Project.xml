@@ -22,6 +22,7 @@
   <haxelib name="flixel" />
   <haxelib name="flixel-addons" />
   <haxelib name="flixel-ui" />
+  <haxelib name="hxcpp" />
 
   <!-- Android ayarları -->
   <android package="com.pump.TheClickAndCrack" versionCode="1" versionName="1.0.0">
