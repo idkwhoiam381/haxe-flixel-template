@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
-	<app title="ClickerGame" file="MyGame" packageName="com.pump.ClickerGame" package="com.pump.ClickerGame" main="Main" />
-	<app preloader="utils.Preloader" />
 
-	<set name="BUILD_DIR" value="export" />
+  <!-- Oyun bilgileri -->
+  <meta title="My HaxeFlixel Game" package="com.example.myhaxegame" version="1.0.0" company="MyCompany" />
 
-	<window width="1920" height="1080" fps="60" background="#000000" hardware="true" vsync="true" />
-	<window if="html5" width="1280" height="720" resizable="true" />
-	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
-	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" allow-shaders="true" require-shaders="true" allow-high-dpi="true" />
+  <!-- Hedef platformlar -->
+  <app main="Main" path="export" file="MyHaxeGame" version="1.0.0" />
 
-	<classpath name="src" />
+  <!-- Kaynaklar -->
+  <source path="src" />
 
-	<assets path="assets" />
+  <!-- Assets -->
+  <assets path="assets/images" />
+  <assets path="assets/sounds" />
+  <assets path="assets/music" />
+  <assets path="assets/fonts" />
 
-	<haxelib name="flixel" version="4.10.0" />
-	<haxelib name="flixel-addons" />
+  <!-- Haxelib bağımlılıkları -->
+  <haxelib name="lime" />
+  <haxelib name="openfl" />
+  <haxelib name="flixel" />
+  <haxelib name="flixel-addons" />
+  <haxelib name="flixel-ui" />
 
-	<haxedef name="FLX_NO_MOUSE" if="mobile" />
-	<haxedef name="FLX_NO_KEYBOARD" if="mobile" />
-	<haxedef name="FLX_NO_TOUCH" if="desktop" />
-	<haxedef name="FLX_NO_DEBUG" unless="debug" />
-	<haxedef name="js-es" value="6" />
+  <!-- Android ayarları -->
+  <android package="com.pump.TheClickAndCrack" versionCode="1" versionName="1.0.0">
+    <manifest android:installLocation="auto"/>
+    <apkMainActivity name="MainActivity" />
+    <meta android:name="android:minSdkVersion" android:value="21"/>
+    <meta android:name="android:targetSdkVersion" android:value="33"/>
+  </android>
+
+  <!-- Hedef platformlar -->
+  <window width="1280" height="720" fps="60" />
+
 </project>
