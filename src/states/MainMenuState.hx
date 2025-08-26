@@ -1,9 +1,10 @@
-package;
+package states;
 
 import flixel.FlxState;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.text.FlxText;
+import flixel.text.FlxText
+import states.TheClickingState;
 
 class MainMenuState extends FlxState
 {
@@ -40,7 +41,7 @@ class MainMenuState extends FlxState
         cursor = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
         cursor.loadGraphic("assets/images/cursor2.png");
         add(cursor);
-        FlxG.mouse.show(false); // varsayılan imleci gizle
+        FlxG.mouse.visible = false; // varsayılan imleci gizle
 
         // Menü müziği
         FlxG.sound.playMusic("assets/music/musicbackground.ogg", 1, true);
@@ -54,15 +55,13 @@ class MainMenuState extends FlxState
         cursor.x = FlxG.mouse.screenX - cursor.width / 2;
         cursor.y = FlxG.mouse.screenY - cursor.height / 2;
 
-        if (FlxG.mouse.justPressed())
+        if (FlxG.mouse.justPressed)
         {
             // Oyna yazısına tıklayınca
-            if (playText.overlapsPoint(FlxG.mouse.screenX, FlxG.mouse.screenY))
+            if (FlxG.mouse.overlaps(playText))
             {
-                FlxG.switchState(new states.TheClickingState());
+                FlxG.switchState(new TheClickingState());
             }
-
-            // Ayar yazısına tıklanırsa pasif, hiçbir şey yapmaz
         }
     }
 }
