@@ -1,0 +1,47 @@
+name: Build Android APK
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@main
+
+    - name: Setup Haxe
+      uses: krdlab/setup-haxe@main
+      with:
+        haxe-version: "4.2.5"
+
+    - name: Install Haxelib dependencies
+      run: |
+        haxelib setup ~/.haxelib
+        haxelib install lime 7.9.0 --quiet
+        haxelib install openfl 9.1.0 --quiet
+        haxelib install flixel 4.11.0 --quiet
+        haxelib install flixel-addons --quiet
+        haxelib install flixel-ui --quiet
+        haxelib install hxcpp --quiet
+        haxelib run lime setup --quiet
+
+    - name: Setup Android SDK + NDK
+      uses: android-actions/setup-android@main
+      with:
+        api-level: 30
+        ndk-version: 21.4.7075529
+
+    - name: Configure Lime for Android
+      run: |
+        haxelib run lime config ANDROID_SDK $ANDROID_HOME
+        haxelib run lime config ANDROID_NDK $ANDROID_NDK_LATEST_HOME
+        haxelib run lime config JAVA_HOME $JAVA_HOME_11_X64
+
+    - name: Build Android APK
+      run: |
+        haxelib run lime build android -release
+
+    - name: Upload APK
+      uses: actions/upload-artifact@main
+      with:
+        name: myBalls
+        path: export/release/android/bin/app/build/outputs/apk/release/*.apk
