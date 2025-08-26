@@ -8,7 +8,6 @@ import flixel.text.FlxText;
 class MainMenuState extends FlxState
 {
     var bg:FlxSprite;
-    var cursor:FlxSprite;
     var playText:FlxText;
     var settingsText:FlxText;
 
@@ -22,7 +21,7 @@ class MainMenuState extends FlxState
         add(bg);
 
         // Başlık
-        var title:FlxText = new FlxText(0, 50, FlxG.width, "My FNF Game");
+        var title:FlxText = new FlxText(0, 50, FlxG.width, "ClickingGame Android");
         title.setFormat(null, 40, 0xFFFFFFFF, "center");
         add(title);
 
@@ -31,16 +30,10 @@ class MainMenuState extends FlxState
         playText.setFormat(null, 30, 0xFFFFFF00, "center");
         add(playText);
 
-        // Ayar yazısı (pasif)
+        // Ayarlar yazısı
         settingsText = new FlxText(0, 300, FlxG.width, "Settings");
         settingsText.setFormat(null, 30, 0xAAAAAA, "center");
         add(settingsText);
-
-        // Özelleştirilmiş mouse
-        cursor = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
-        cursor.loadGraphic("assets/images/cursor2.png");
-        add(cursor);
-        FlxG.mouse.visible = false; // varsayılan imleci gizle
 
         // Menü müziği
         FlxG.sound.playMusic("assets/music/musicbackground.ogg", 1, true);
@@ -50,14 +43,11 @@ class MainMenuState extends FlxState
     {
         super.update(elapsed);
 
-        // Mouse takip
-        cursor.x = FlxG.mouse.screenX - cursor.width / 2;
-        cursor.y = FlxG.mouse.screenY - cursor.height / 2;
-
-        if (FlxG.mouse.justPressed)
+        // Dokunmatik kontrol
+        var touch = FlxG.touches.getFirst();
+        if (touch != null && touch.justPressed)
         {
-            // Oyna yazısına tıklayınca
-            if (FlxG.mouse.overlaps(playText))
+            if (playText.overlapsPoint(touch.getScreenPosition()))
             {
                 FlxG.switchState(new states.TheClickingState());
             }
