@@ -1,4 +1,4 @@
-name: Build
+name: Build Main
 
 on: workflow_dispatch
 
@@ -13,7 +13,6 @@ jobs:
             buildArgs: "android -ONLY_ARM64 -final"
             setupCommand: sh ./setup/mobile.sh
             artifactName: androidBuild-Arm64
-            artifactPath: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
             system: Android
     uses: ./.github/workflows/build.yml
     with:
