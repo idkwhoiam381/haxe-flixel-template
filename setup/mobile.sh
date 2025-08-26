@@ -11,5 +11,5 @@ haxelib install flixel 4.10.0 --quiet
 haxelib install flixel-addons 3.1.1 --quiet
 haxelib install lime 8.0.2 --quiet
 haxelib install openfl 9.2.2 --quiet
-haxelib git hxcpp https://github.com/PsychExtendedThings/hxcpp --quiet
+haxelib install hxcpp 4.3.2 --quiet
 echo Finished!
