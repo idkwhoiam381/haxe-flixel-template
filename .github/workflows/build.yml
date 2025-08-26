@@ -45,15 +45,14 @@ jobs:
       - name: Setup Java JDK
         uses: actions/setup-java@main
         with:
-          java-version: 11
+          distribution: 'zulu'
+          java-version: 18
 
       - name: Setup Android NDK
-        if: inputs.system == 'Android'
-        id: setup-ndk
         uses: nttld/setup-ndk@main
+        id: setup-ndk
         with:
           ndk-version: r21e
-          add-to-path: false
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@main
@@ -72,9 +71,8 @@ jobs:
       - name: Compile
         run: haxelib run lime build ${{ inputs.buildArgs }}
 
-      - name: Upload Artifact
+      - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
-          name: ${{ inputs.artifactName }}
-          path: ${{ inputs.artifactPath }}
-          if-no-files-found: error
+          name: MyGameLol
+          path: export/release/android/bin/app/build/outputs/apk/debug
