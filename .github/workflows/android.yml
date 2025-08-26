@@ -33,7 +33,9 @@ jobs:
         haxelib dev flixel-ui flixel-ui
         git clone https://github.com/HaxeFoundation/hxcpp.git
         haxelib dev hxcpp hxcpp
-        haxelib install format --quiet
+        git clone https://github.com/HaxeFoundation/format.git
+        haxelib master format format
+        
 
     - name: Setup Android SDK + NDK
       uses: android-actions/setup-android@main
