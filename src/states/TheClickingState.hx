@@ -15,7 +15,6 @@ class TheClickingState extends FlxState
     var level:Int = 1;
     var maxLevel:Int = 100;
 
-    // Market bonusları
     var marketLevels:Array<Int> = [2, 4, 8]; 
     var marketBought:Int = 0; 
 
@@ -23,7 +22,6 @@ class TheClickingState extends FlxState
     var cursor:FlxSprite;
     var boyfriend:FlxSprite;
 
-    // İki müzik için FlxSound
     var music1:FlxSound;
     var music2:FlxSound;
 
@@ -49,14 +47,11 @@ class TheClickingState extends FlxState
         levelText = new FlxText(10, 40, FlxG.width, "Level: 1");
         add(levelText);
 
-        // Kedi sesi yükle
-        FlxG.sound.load("assets/sounds/meow.mp3");
-
         // Özelleştirilmiş fare imleci
         cursor = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
         cursor.loadGraphic("assets/images/cursor.png");
         add(cursor);
-        FlxG.mouse.show(false);
+        FlxG.mouse.visible = false;
 
         // Boyfriend karakteri
         boyfriend = new FlxSprite(FlxG.width - 150, FlxG.height / 2 - 50);
@@ -64,14 +59,14 @@ class TheClickingState extends FlxState
         add(boyfriend);
 
         // İki .ogg müzik
-        music1 = FlxG.sound.load("assets/music/background1.ogg");
-        music2 = FlxG.sound.load("assets/music/background2.ogg");
+        music1 = new FlxSound();
+        music1.loadEmbedded("assets/music/background1.ogg", true, true);
 
-        music1.loop = true;
-        music2.loop = true;
+        music2 = new FlxSound();
+        music2.loadEmbedded("assets/music/background2.ogg", true, true);
 
-        music1.play();
-        music2.play();
+        music1.play(true);
+        music2.play(true);
     }
 
     override public function update(elapsed:Float):Void
@@ -82,7 +77,7 @@ class TheClickingState extends FlxState
         cursor.x = FlxG.mouse.screenX - cursor.width / 2;
         cursor.y = FlxG.mouse.screenY - cursor.height / 2;
 
-        if (FlxG.mouse.justPressed())
+        if (FlxG.mouse.justPressed)
         {
             // Oyuncuyu taşı
             player.x = FlxG.mouse.screenX - player.width / 2;
@@ -93,14 +88,11 @@ class TheClickingState extends FlxState
             for (i in 0...marketBought)
                 clickBonus += marketLevels[i];
 
-            // Skoru arttır
             score += clickBonus;
 
-            // Level arttırma
             if (level < maxLevel)
                 level += 1;
 
-            // Skor ve level textlerini güncelle
             scoreText.text = "Score: " + score;
             levelText.text = "Level: " + level;
 
