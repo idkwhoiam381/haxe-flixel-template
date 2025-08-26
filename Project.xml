@@ -2,10 +2,10 @@
 <project>
 
   <!-- Oyun bilgileri -->
-  <meta title="My HaxeFlixel Game" package="com.example.myhaxegame" version="1.0.0" company="MyCompany" />
+  <meta title="TheClicking" package="com.pump.TheClickAndCrack" version="1.0.0" company="XPumpkingGuyX" />
 
   <!-- Hedef platformlar -->
-  <app main="Main" path="export" file="MyHaxeGame" version="1.0.0" />
+  <app main="Main" path="export" file="ilkoyunum" version="1.0.0" />
 
   <!-- Kaynaklar -->
   <source path="src" />
