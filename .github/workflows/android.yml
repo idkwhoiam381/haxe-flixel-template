@@ -1,10 +1,5 @@
 name: Build Android APK
 
-on:
-  push:
-    branches: [ "main" ]
-  workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,7 +11,7 @@ jobs:
     - name: Setup Haxe
       uses: krdlab/setup-haxe@master
       with:
-        haxe-version: "4.2.5"
+        haxe-version: 4.2.5
 
     - name: Install dependencies
       run: |
@@ -27,13 +22,18 @@ jobs:
 
     - name: Install Haxelib
       run: |
-        haxelib install lime 7.9.0 --quiet --always
-        haxelib install openfl 9.1.0 --quiet --always
-        haxelib install flixel 4.11.0 --quiet --always
-        haxelib install flixel-addons --quiet --always
-        haxelib install flixel-ui --quiet --always
-        haxelib install hxcpp --quiet --always
-        haxelib run lime setup
+        git clone https://github.com/openfl/lime.git
+        haxelib dev lime lime
+        git clone https://github.com/openfl/openfl.git
+        haxelib dev openfl openfl
+        git clone https://github.com/HaxeFlixel/flixel.git
+        haxelib dev flixel flixel
+        git clone https://github.com/HaxeFlixel/flixel-addons.git
+        haxelib dev flixel-addons flixel-addons
+        git clone https://github.com/HaxeFlixel/flixel-ui.git
+        haxelib dev flixel-ui flixel-ui
+        git clone https://github.com/HaxeFoundation/hxcpp.git
+        haxelib dev hxcpp hxcpp
 
     - name: Setup Android SDK + NDK
       uses: android-actions/setup-android@main
