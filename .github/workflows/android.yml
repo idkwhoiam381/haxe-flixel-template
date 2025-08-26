@@ -1,5 +1,6 @@
 name: Build Android APK
 
+on:
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,13 +13,6 @@ jobs:
       uses: krdlab/setup-haxe@master
       with:
         haxe-version: 4.2.5
-
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y haxe openjdk-11-jdk
-        mkdir -p ~/.haxelib_repo
-        haxelib setup ~/.haxelib_repo
 
     - name: Install Haxelib
       run: |
