@@ -19,7 +19,6 @@ class TheClickingState extends FlxState
     var marketBought:Int = 0; 
 
     var bg:FlxSprite;
-    var cursor:FlxSprite;
     var boyfriend:FlxSprite;
 
     var music1:FlxSound;
@@ -47,18 +46,12 @@ class TheClickingState extends FlxState
         levelText = new FlxText(10, 40, FlxG.width, "Level: 1");
         add(levelText);
 
-        // Özelleştirilmiş fare imleci
-        cursor = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
-        cursor.loadGraphic("assets/images/cursor.png");
-        add(cursor);
-        FlxG.mouse.visible = false;
-
         // Boyfriend karakteri
         boyfriend = new FlxSprite(FlxG.width - 150, FlxG.height / 2 - 50);
         boyfriend.loadGraphic("assets/images/boyfriend.png");
         add(boyfriend);
 
-        // İki .ogg müzik
+        // Müzikler
         music1 = new FlxSound();
         music1.loadEmbedded("assets/music/background1.ogg", true, true);
 
@@ -73,33 +66,30 @@ class TheClickingState extends FlxState
     {
         super.update(elapsed);
 
-        // Özelleştirilmiş imleci takip ettir
-        cursor.x = FlxG.mouse.screenX - cursor.width / 2;
-        cursor.y = FlxG.mouse.screenY - cursor.height / 2;
-
-        if (FlxG.mouse.justPressed)
+        var touch = FlxG.touches.getFirst();
+        if (touch != null && touch.justPressed)
         {
-            // Oyuncuyu taşı
-            player.x = FlxG.mouse.screenX - player.width / 2;
-            player.y = FlxG.mouse.screenY - player.height / 2;
+            // Oyuncuyu dokunulan yere taşı
+            player.x = touch.screenX - player.width / 2;
+            player.y = touch.screenY - player.height / 2;
 
-            // Tıklama bonusu
+            // Bonus hesapla
             var clickBonus:Int = 1; 
             for (i in 0...marketBought)
                 clickBonus += marketLevels[i];
 
+            // Skor & level
             score += clickBonus;
-
             if (level < maxLevel)
                 level += 1;
 
             scoreText.text = "Score: " + score;
             levelText.text = "Level: " + level;
 
-            // Rastgele renk değiştir
+            // Renk değiştir
             player.color = FlxG.random.int(0xFF000000, 0xFFFFFFFF);
 
-            // Kedi sesi çal
+            // Ses çal
             FlxG.sound.play("assets/sounds/meow.mp3");
         }
     }
