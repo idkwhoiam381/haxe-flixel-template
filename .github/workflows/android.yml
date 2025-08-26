@@ -1,5 +1,10 @@
 name: Build Android APK
 
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,7 +27,7 @@ jobs:
         haxelib install flixel-addons --quiet
         haxelib install flixel-ui --quiet
         haxelib install hxcpp --quiet
-        haxelib run lime setup --quiet
+        haxelib run lime setup
 
     - name: Setup Android SDK + NDK
       uses: android-actions/setup-android@main
@@ -43,5 +48,5 @@ jobs:
     - name: Upload APK
       uses: actions/upload-artifact@main
       with:
-        name: myBalls
+        name: MyBalls
         path: export/release/android/bin/app/build/outputs/apk/release/*.apk
